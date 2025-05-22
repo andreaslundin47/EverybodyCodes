@@ -30,20 +30,9 @@ fn count_strikes(input: &str) -> Result<usize> {
 fn count_strikes_advanced(input: &str) -> Result<usize> {
     let nails = parse(input).with_context(|| "Parsing input file")?;
 
-    let min: usize = nails
+    let strikes = nails
         .iter()
-        .min()
-        .copied()
-        .with_context(|| "Taking min from empty nails list.")?;
-
-    let max: usize = nails
-        .iter()
-        .max()
-        .copied()
-        .with_context(|| "Taking max from empty nails list.")?;
-
-    let strikes = (min..=max)
-        .map(|target| nails.iter().map(|n| n.abs_diff(target)).sum())
+        .map(|target| nails.iter().map(|n| n.abs_diff(*target)).sum())
         .min()
         .with_context(|| "Taking min number of strikes")?;
 
