@@ -1,0 +1,8 @@
+[package]
+name = "quest-2"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+glam = "0.33.5"
+nom = "8.0.0"
